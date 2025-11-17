@@ -6,15 +6,15 @@
     "scripts": {
         "mrm": "mrm --preset=@adonisjs/mrm-preset",
         "lint": "eslint . --ext=.ts --fix",
-        "compile": "yarn lint && yarn format && yarn build",
-        "build": "yarn ts build.ts",
-        "prepublishOnly": "yarn compile && yarn make:changelog",
+        "compile": "pnpm run lint && pnpm run format && pnpm run build",
+        "build": "pnpm run ts -- build.ts",
+        "prepublishOnly": "pnpm run compile && pnpm run make:changelog",
         "format": "prettier --write .",
         "prepare": "husky install",
         "make:changelog": "conventional-changelog -i CHANGELOG.md -s",
         "ts": "node -r @adonisjs/require-ts/build/register",
-        "test": "yarn ts tests",
-        "coverage": "c8 yarn test"
+        "test": "pnpm run ts -- tests",
+        "coverage": "c8 pnpm run test"
     },
     "repository": {
         "type": "git",
